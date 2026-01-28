@@ -1,56 +1,56 @@
-# mikylee teslavia's Personal Website
+# mikylee teslavia 的个人网站
 
-This is the source code for my personal website, built with [Astro](https://astro.build) and deployed on [Vercel](https://vercel.com).
+这是我个人网站的源代码，使用 [Astro](https://astro.build) 构建，并部署在 [GitHub Pages](https://pages.github.com/) 上。
 
-## About
+## 关于
 
-I'm mikylee teslavia, an AI developer and open source contributor. This website hosts my personal blog and information about my work.
+我是 mikylee teslavia，一名 AI 开发者和开源贡献者。这个网站是我的个人博客和工作信息的发布平台。
 
-## Project Structure
+## 项目结构
 
 ```text
-├── public/               # Static assets (images, fonts, favicon)
-│   ├── assets/          # Images for blog posts
-│   └── fonts/           # Web fonts
+├── public/               # 静态资源 (图片, 字体, favicon)
+│   ├── assets/          # 博文图片
+│   └── fonts/           # 网页字体
 ├── src/
-│   ├── assets/          # Icons and images used in components
-│   ├── components/      # Reusable UI components
-│   │   └── ui/          # React components
-│   ├── content/         # Content collections
-│   │   └── blog/        # Blog posts in Markdown format (organized by year)
-│   ├── layouts/         # Page layouts and templates
-│   ├── pages/           # Routes and pages
-│   ├── styles/          # Global styles and CSS
-│   └── utils/           # Utility functions
-├── astro.config.mjs     # Astro configuration
-├── vercel.json          # Vercel deployment and CSP configuration
-├── package.json         # Project dependencies and scripts
-├── tailwind.config.mjs  # Tailwind CSS configuration
-└── LICENSE              # Dual license (CC BY 4.0 + MIT)
+│   ├── assets/          # 组件中使用的图标和图片
+│   ├── components/      # 可复用的 UI 组件
+│   │   └── ui/          # React 组件
+│   ├── content/         # 内容集合
+│   │   └── blog/        # Markdown 格式的博文 (按年份组织)
+│   ├── layouts/         # 页面布局和模板
+│   ├── pages/           # 路由和页面
+│   ├── styles/          # 全局样式和 CSS
+│   └── utils/           # 工具函数
+├── astro.config.mjs     # Astro 配置文件
+├── .github/workflows/   # GitHub Actions 部署工作流
+├── package.json         # 项目依赖和脚本
+├── tailwind.config.mjs  # Tailwind CSS 配置文件
+└── LICENSE              # 双重许可证 (CC BY 4.0 + MIT)
 ```
 
-## Commands
+## 命令
 
-| Command                | Action                                      |
+| 命令 | 操作 |
 | :--------------------- | :------------------------------------------ |
-| `npm install`          | Installs dependencies                       |
-| `npm run dev`          | Starts local dev server at `localhost:4321` |
-| `npm run build`        | Build the production site to `./dist/`      |
-| `npm run preview`      | Preview the build locally, before deploying |
+| `npm install` | 安装依赖 |
+| `npm run dev` | 在 `localhost:4321` 启动本地开发服务器 |
+| `npm run build` | 构建生产版本的网站到 `./dist/` 目录 |
+| `npm run preview` | 在部署前本地预览构建结果 |
 
-## Deployment
+## 部署
 
-This site is set up for easy deployment on Vercel. Just connect your GitHub repository to Vercel, and it will automatically build and deploy the site when changes are pushed.
+本项目已配置为通过 GitHub Actions 自动部署到 GitHub Pages。当改动被推送到 `main` 分支时，将自动触发构建和部署流程。
 
-## License
+## 许可证
 
-This repository uses dual licensing:
+本仓库采用双重许可证：
 
-- **Documentation & Blog Posts**: Licensed under [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)
-- **Code & Code Snippets**: Licensed under the [MIT License](LICENSE)
+- **文档与博文**: 基于 [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/) 许可
+- **代码与代码片段**: 基于 [MIT 许可证](LICENSE) 许可
 
-See the [LICENSE](LICENSE) file for full details.
+详情请参阅 [LICENSE](LICENSE) 文件。
 
-## Special Thanks
+## 特别鸣谢
 
-Special thanks to [Sat Naing](https://github.com/satnaing) for creating the excellent [AstroPaper theme](https://astro-paper.pages.dev/) that served as the foundation for this website. Their thoughtful design and clean architecture made it a joy to build upon.
+特别感谢 [Sat Naing](https://github.com/satnaing) 创作了优秀的 [AstroPaper 主题](https://astro-paper.pages.dev/)，它为本网站奠定了基础。其周到的设计和清晰的架构让二次开发成为一种享受。
