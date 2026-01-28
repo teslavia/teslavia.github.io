@@ -36,7 +36,7 @@ export const SITE: Site = {
   profile: "https://teslavia.github.io/about",
   desc: "Personal blog and notes by teslavia.",
   title: "teslavia",
-  ogImage: "peter-avatar.jpg",
+  ogImage: "avatar.jpg",
   lightAndDarkMode: true,
   postPerIndex: 10,
   postPerPage: 10,
