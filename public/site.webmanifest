@@ -1,0 +1,16 @@
+{
+  "name": "teslavia",
+  "short_name": "teslavia",
+  "description": "Personal blog and notes by teslavia.",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32 48x48",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": "/",
+  "display": "browser",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff"
+}
