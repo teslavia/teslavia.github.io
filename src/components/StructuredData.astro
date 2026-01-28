@@ -9,9 +9,7 @@ export interface Props {
 const { type, data } = Astro.props;
 const siteUrl = SITE.website.endsWith("/") ? SITE.website.slice(0, -1) : SITE.website;
 const siteImage = new URL(SITE.ogImage, SITE.website).toString();
-const sameAs = SOCIAL_LINKS.filter((link) => link.href.startsWith("http")).map(
-  (link) => link.href,
-);
+const sameAs = SOCIAL_LINKS.filter((link) => link.href.startsWith("http")).map((link) => link.href);
 
 let structuredData = {};
 
