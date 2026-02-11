@@ -230,7 +230,9 @@ export default async (post) => {
       width: 1200,
       height: 630,
       embedFont: true,
-      fonts: await loadGoogleFonts(post.data.title + post.data.author + "teslavia.github.io" + "by"),
+      fonts: await loadGoogleFonts(
+        post.data.title + post.data.author + "teslavia.github.io" + "by"
+      ),
     }
   );
 };
