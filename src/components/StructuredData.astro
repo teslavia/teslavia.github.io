@@ -1,0 +1,80 @@
+---
+import { SITE, SOCIAL_LINKS } from "@/consts";
+
+export interface Props {
+  type: "BlogPosting" | "Person" | "WebSite";
+  data: any;
+}
+
+const { type, data } = Astro.props;
+const siteUrl = SITE.website.endsWith("/") ? SITE.website.slice(0, -1) : SITE.website;
+const siteImage = new URL(SITE.ogImage, SITE.website).toString();
+const sameAs = SOCIAL_LINKS.filter((link) => link.href.startsWith("http")).map(
+  (link) => link.href,
+);
+
+let structuredData = {};
+
+if (type === "BlogPosting") {
+  structuredData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: data.title,
+    description: data.description,
+    author: {
+      "@type": "Person",
+      name: data.author || SITE.author,
+      url: SITE.profile,
+    },
+    datePublished: data.pubDatetime.toISOString(),
+    dateModified: data.modDatetime?.toISOString() || data.pubDatetime.toISOString(),
+    publisher: {
+      "@type": "Person",
+      name: SITE.author,
+      logo: {
+        "@type": "ImageObject",
+        url: siteImage,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": data.url,
+    },
+    image: data.ogImage || siteImage,
+    articleSection: data.tags?.[0] || "Technology",
+    keywords: data.tags?.join(", ") || "",
+    wordCount: data.wordCount,
+    timeRequired: data.readingTime,
+  };
+} else if (type === "Person") {
+  structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: SITE.author,
+    url: siteUrl,
+    image: siteImage,
+    sameAs,
+    jobTitle: "Software Engineer",
+    description: SITE.desc,
+  };
+} else if (type === "WebSite") {
+  structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE.title,
+    url: siteUrl,
+    description: SITE.desc,
+    author: {
+      "@type": "Person",
+      name: SITE.author,
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${siteUrl}/search?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
+}
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

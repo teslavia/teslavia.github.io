@@ -1,0 +1,149 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "astro",
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*.md",
+      "has": [{ "type": "host", "value": "steipete.me" }],
+      "missing": [{ "type": "header", "key": "accept", "value": "(?i).*text/markdown.*" }],
+      "destination": "https://steipete.md/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/:year(\\d{4})/:month(\\d{2})/:day(\\d{2})/:slug",
+      "destination": "/posts/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/blog/:year(\\d{4})/:month(\\d{2})/:day(\\d{2})/:slug",
+      "destination": "/posts/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/blog/:slug([^\\/]+)$",
+      "destination": "/posts/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/categories/:category(.*)",
+      "destination": "/tags/:category",
+      "permanent": true
+    },
+    { "source": "/tag/:tag", "destination": "/tags/:tag", "permanent": true },
+    {
+      "source": "/20:year/:month/:day/:slug(.*)",
+      "destination": "/posts/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/blog/a-new-beginning/",
+      "destination": "/posts/finding-my-spark-again",
+      "permanent": true
+    },
+    {
+      "source": "/posts/llm-codes-transform-developer-docs",
+      "destination": "/posts/2025/llm-codes-transform-developer-docs",
+      "permanent": true
+    },
+    {
+      "source": "/posts/understanding-codebases-with-ai-gemini-workflow",
+      "destination": "/posts/2025/understanding-codebases-with-ai-gemini-workflow",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "^(?!(steipete\\.me|www\\.steipete\\.me|steipete\\.md|www\\.steipete\\.md|.*\\.vercel\\.app|.*\\.friendship\\.dev|.*\\.amantus\\.dev|.*\\.sweetistics\\.com)).*$"
+        }
+      ],
+      "destination": "https://steipete.me/:path*",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "(?i).*text/markdown.*"
+        }
+      ],
+      "destination": "/index.md"
+    },
+    {
+      "source": "/(about|archives|posts)",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "(?i).*text/markdown.*"
+        }
+      ],
+      "destination": "/$1.md"
+    },
+    {
+      "source": "/posts/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "(?i).*text/markdown.*"
+        }
+      ],
+      "destination": "/posts/:path*.md"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*).md",
+      "headers": [
+        {
+          "key": "Vary",
+          "value": "Accept"
+        }
+      ]
+    },
+    {
+      "source": "/(|about|archives|posts|posts/.*)",
+      "headers": [
+        {
+          "key": "Vary",
+          "value": "Accept"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self' https://steipete.me https://*.vercel.app https://*.sweetistics.com https://platform.twitter.com https://syndication.twitter.com https://player.vimeo.com https://vimeo.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: data: https://steipete.me https://*.vercel.app https://*.sweetistics.com https://platform.twitter.com https://cdn.syndication.twimg.com https://player.vimeo.com https://vercel.live https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://steipete.me https://*.vercel.app https://*.sweetistics.com https://platform.twitter.com; img-src 'self' data: https: blob: https://ghchart.rshah.org; font-src 'self' https://steipete.me https://*.vercel.app https://*.sweetistics.com; connect-src 'self' https://steipete.me https://*.vercel.app https://*.sweetistics.com https://platform.twitter.com https://player.vimeo.com https://vimeo.com https://vitals.vercel-insights.com https://va.vercel-scripts.com; media-src 'self' https://steipete.me https://*.vercel.app https://*.sweetistics.com https://player.vimeo.com https://vimeo.com; object-src 'none'; frame-ancestors 'none'; frame-src https://platform.twitter.com https://syndication.twitter.com https://player.vimeo.com https://vercel.live https://www.youtube.com https://youtube.com https://*.youtube.com https://www.youtube-nocookie.com https://*.youtube-nocookie.com; worker-src 'self' blob:"
+        }
+      ]
+    }
+  ]
+}
